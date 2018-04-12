@@ -9,5 +9,5 @@ import java.util.Collection;
 public interface SellerRepository extends CrudRepository<Seller, Long>
 {
     Collection<Seller> findSellersByNameLike(@Param("name") String name);
-    Seller findSellersByName(@Param("name") String name);
+    Seller findSellersByName(@Param("name") String name);    
 }
