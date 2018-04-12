@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 
-@NodeEntity
+@NodeEntity(label = "Product")
 public class Product
 {
     public  Product()
@@ -33,14 +33,18 @@ public class Product
 
     @Property(name = "title")
     public String title;
-
+    
+    @Property(name = "Rating")
     public float Rating;
+    @Property(name = "Description")
     public String Description;
-
+    @Property(name = "Price")
     public Double Price;
+    @Property(name = "Quantity")
     public int Quantity;
-
+    @Property(name = "Company")
     public String Company;
+    @Property(name = "URL")
     public String URL;
 
 
@@ -59,7 +63,7 @@ public class Product
         return title;
     }
 
-    @Relationship(type = "Sells", direction = Relationship.INCOMING)
-    public Seller Seller;
+   @Relationship(type = "Sells", direction = Relationship.INCOMING)
+   public Seller Seller;
 
 }
