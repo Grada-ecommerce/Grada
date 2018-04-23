@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+@RequestMapping("/product")
 @Controller
 public class ProductController
 {
@@ -34,13 +35,16 @@ public class ProductController
         return "product_grid";
     }
 
-    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
-    public String ShowProduct(@PathVariable Long id, Model model)
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public String ShowProduct(@PathVariable("id") Product product, Model model)
     {
-        Product product = productService.findProductByID(id);
-        if(product == null)
-            return "redirect:/";
+        //System.out.println(id);
+        //Product product = productService.findProductByID(id);
+        //System.out.println(product.title);
+        //if(product == null)
+        //    return "redirect:/";
         model.addAttribute("product", product);
+        System.out.println(product.title);
         return "productid";
     }
 
@@ -49,7 +53,7 @@ public class ProductController
     public String AddProduct(Model model)
     {
         model.addAttribute("product", new Product());
-        return "add";
+        return "addProduct";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)

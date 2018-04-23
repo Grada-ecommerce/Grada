@@ -1,4 +1,4 @@
-package com.grada.ecommerce.Data.Mock;
+package com.grada.ecommerce.Data;
 
 import org.neo4j.ogm.session.SessionFactory;
 import org.springframework.context.annotation.ComponentScan;

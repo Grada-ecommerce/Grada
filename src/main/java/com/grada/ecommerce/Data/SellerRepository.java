@@ -1,4 +1,4 @@
-package com.grada.ecommerce.Data.Mock;
+package com.grada.ecommerce.Data;
 
 import com.grada.ecommerce.Models.Seller;
 import org.springframework.data.repository.CrudRepository;
@@ -9,5 +9,6 @@ import java.util.Collection;
 public interface SellerRepository extends CrudRepository<Seller, Long>
 {
     Collection<Seller> findSellersByNameLike(@Param("name") String name);
-    Seller findSellersByName(@Param("name") String name);    
+    Seller findSellersByName(@Param("name") String name);
+
 }
