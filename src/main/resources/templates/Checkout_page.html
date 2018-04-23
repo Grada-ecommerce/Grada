@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CheckoutPage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="all">
+
+        <div id="content">
+            <div class="container">
+
+                <div class="col-md-12">
+                    <ul class="breadcrumb">
+                        <li><a href="#">Home</a>
+                        </li>
+                        <li>Shopping cart</li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-sm-12 col-md-6 my-2 p-auto" id="basket">
+
+                    <div class="box">
+
+                        <form method="post" action="">
+
+                            <h1>Shopping cart</h1>
+                            <p class="text-muted">You currently have 3 item(s) in your cart.</p>
+                            <div th:each="product:$(products)" class="table-responsive" >
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Product</th>
+                                            <th>Quantity</th>
+                                            <th>Unit price</th>
+                                            <th>Discount</th>
+                                            <th colspan="2">Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <a href="#">
+                                                    <img src=http://via.placeholder.com/150x150/888/111"" th:src="$(product.html)"  alt="img">
+                                                </a>
+                                            </td>
+                                            <td><a href="#"></a>
+                                            </td>
+                                            <td>
+                                                <input type="number" value="2" class="form-control">
+                                            </td>
+                                            <td><span th:text="$(product.price)">Some price</span></td>
+                                            <td><span th:text="$(product.price)">Some discount</span></td>
+                                            <td><span th:text="$(product.price)">Effective Price</span></td>
+                                            <td><a href="#"><i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                        </tr>
+                                       
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <th colspan="5">Total price</th>
+                                        
+                                        </tr>
+                                    </tfoot>
+                                </table>
+
+                            </div>
+                            <!-- /.table-responsive -->
+
+                            <div class="box-footer">
+                                <div class="pull-left">
+                                    <a href="index.html" class="btn btn-default"><i class="fa fa-chevron-left"></i> Continue shopping</a>
+                                </div>
+                                <div class="pull-right">
+                                    <button class="btn btn-default"><i class="fa fa-refresh"></i> Update basket</button>
+                                    <button type="submit" class="btn btn-primary">Proceed to checkout <i class="fa fa-chevron-right"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+</body>
+</html>
