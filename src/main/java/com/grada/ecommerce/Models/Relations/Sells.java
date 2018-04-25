@@ -4,6 +4,32 @@ import com.grada.ecommerce.Models.Product;
 import com.grada.ecommerce.Models.Seller;
 import org.neo4j.ogm.annotation.*;
 
+
+@RelationshipEntity(type = "SELLS")
+public class Sells
+{
+    @Id
+    @GeneratedValue
+    private long id;
+
+    @Property public double price;
+    @StartNode public Seller seller;
+    @EndNode public Product product;
+
+   /* public Sells()
+    {
+
+    }*/
+
+    public Sells(Seller seller,Product product, double price)
+    {
+        this.seller = seller;
+        this.product = product;
+        this.price = price;
+    }
+
+}
+
 /*@RelationshipEntity(type = "Sells")
 public class Sells
 {

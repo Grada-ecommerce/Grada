@@ -1,9 +1,11 @@
 package com.grada.ecommerce.Services;
 
-import com.grada.ecommerce.Data.Mock.SellerRepository;
+import com.grada.ecommerce.Data.SellerRepository;
 import com.grada.ecommerce.Models.Seller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class SellerService
@@ -34,7 +36,20 @@ public class SellerService
         return seller;
     }
 
-    //dont use
+    public Seller findSellerById(long id)
+    {
+        if(Long.valueOf(id) < 0)
+            return null;
+        Optional<Seller> seller = sellerRepository.findById(id);
+
+        if(seller.isPresent())
+            return seller.get();
+        else
+            return null;
+    }
+
+
+
     public boolean addSeller(Seller seller)
     {
         if(seller == null)
@@ -44,7 +59,6 @@ public class SellerService
     }
 
 
-    //dont use
     public boolean deleteSeller(Seller seller)
     {
         if(seller == null)
