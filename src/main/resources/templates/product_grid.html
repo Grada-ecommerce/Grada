@@ -45,19 +45,22 @@
 </nav>
 <div class="container text-center">
     <div class="row">
-        <div th:each="product:${products}" class="col-lg-3 col-sm-12 col-md-6 my-2 p-auto">
-            <div class="card">
-                <div class="card-body">
-                    <img src="http://via.placeholder.com/150x150/888/111" th:src="${product.URL}" alt="img" class="card-img-top img-thumbnail">
-                    <div class="card-title lead" th:text="${product.title}">Some product name</div>
-                    <div class="card-text">Price: &#8377;<span th:text="${product.Price}">400</span></div>
+        <div class="card-group">
+            <div th:each="product:${products}" class="col-lg-3 col-sm-12 col-md-6 my-2 p-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <img src="http://via.placeholder.com/150x150/888/111" th:src="${product.URL}" alt="img" class="card-img-top img-thumbnail">
+                        <div class="card-title lead" th:text="${product.title}">Some product name</div>
+                        <div class="card-text">Price: &#8377;<span th:text="${product.Price}">400</span></div>
+                    </div>
+                    <form method="POST" action="/" th:action="@{/product/(id=${product.getId()})}">
+                        <input type="submit" name="btn" class="form-control btn btn-primary" value="View Product">
+                        <input type="submit" name="btn" class="form-control btn btn-primary" value="Add to Cart">
+                    </form>
                 </div>
-                <form method="POST" action="/" th:action="@{/product/(id=${product.getId()})}">
-                    <input type="submit" name="btn" class="form-control btn btn-primary" value="View Product">
-                    <input type="submit" name="btn" class="form-control btn btn-primary" value="Add to Cart">
-                </form>
             </div>
         </div>
+
 
     </div>
 </div>

@@ -1,11 +1,13 @@
 package com.grada.ecommerce.Models;
 
 
+import com.grada.ecommerce.Models.Relations.Sells;
 import com.grada.ecommerce.Models.Seller;
 import org.neo4j.ogm.annotation.*;
 
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -19,9 +21,9 @@ public class Product
     public Product(String title, Double price, int quantity, float rating, String description, String url, String company)
     {
         this.title  = title;
-        this.Rating = rating;
+        this.rating = rating;
         this.Description = description;
-        this.Price = price;
+        this.price = price;
         this.Quantity = quantity;
         this.URL = url;
         this.Company = company;
@@ -34,10 +36,10 @@ public class Product
     @Property(name = "title")
     public String title;
 
-    public float Rating;
+    public float rating;
     public String Description;
 
-    public Double Price;
+    public Double price;
     public int Quantity;
 
     public String Company;
@@ -53,13 +55,17 @@ public class Product
     public Long getId() {
         return id;
     }
+    public String getTitle() { return title; }
+    public float getRating() { return rating; }
+    public double getPrice() { return price; }
 
-    public String getTitle()
-    {
-        return title;
-    }
+    public Map<String, String> properties;
 
-    @Relationship(type = "Sells", direction = Relationship.INCOMING)
-    public Seller Seller;
+   // @Relationship(type = "SELLS", direction = Relationship.INCOMING)
+   // public Sells Seller;
+
+    @Relationship(type = "SELLS", direction = Relationship.INCOMING)
+    public Set<Sells> Sellers = new HashSet<>();
+
 
 }

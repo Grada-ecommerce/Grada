@@ -1,9 +1,12 @@
 package com.grada.ecommerce.Services;
 
-import com.grada.ecommerce.Data.Mock.ProductRepository;
+import com.grada.ecommerce.Data.ProductRepository;
 import com.grada.ecommerce.Models.Product;
+import com.grada.ecommerce.Models.ShortProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class ProductService
@@ -18,10 +21,21 @@ public class ProductService
         this.productRepository = productRepository;
     }
 
+
+    @Deprecated
     public Iterable<Product> products()
     {
-        this.productRepository = productRepository;
+        //this.productRepository = productRepository;
         return productRepository.findAll();
+    }
+
+    public Iterable<ShortProduct> shortProductsByTitle(String title)
+    {
+        Iterable<ShortProduct> s =  productRepository.findByTitleLike(title);
+        s.forEach(
+                shortProduct -> System.out.println(shortProduct.getTitle())
+        );
+        return s;
     }
 
     public void UpdateProduct(Product product)
@@ -51,11 +65,11 @@ public class ProductService
     {
         if(id == null)
             return null;
-        Product product = productRepository.findProductById(id);
+        Optional<Product> product = productRepository.findById(id);
 
-        if(product == null)
+        if(!product.isPresent())
             return null;
 
-        return product;
+        return product.get();
     }
 }

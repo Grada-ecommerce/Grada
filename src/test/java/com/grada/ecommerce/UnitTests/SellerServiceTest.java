@@ -1,7 +1,7 @@
 package com.grada.ecommerce.UnitTests;
 
 
-import com.grada.ecommerce.Data.Mock.SellerRepository;
+import com.grada.ecommerce.Data.SellerRepository;
 import com.grada.ecommerce.Services.SellerService;
 import org.junit.Before;
 import org.mockito.Mockito;
