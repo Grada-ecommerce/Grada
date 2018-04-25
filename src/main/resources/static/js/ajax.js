@@ -10,10 +10,20 @@ function getReccProducts() {
             }
             data.forEach(post => {
                 var $tr = $('<div class="col-lg-3">').append(
-                    $('<img class="rounded-circle" width="140" height="140">').attr('src',img),
+                    $('<img>').attr({
+                        "src":img,
+                        "class": "rounded-circle",
+                        "width":"140",
+                        "height":"140",
+                        "alt":"Product Image"
+                    }),
                     $('<h2>').text(post.title),
-                    $('<p class="lead">').text(post.body)
-                    $('<a class="btn btn-secondary">')
+                    $('<p class="lead">').text(post.body),
+                    $('<a>').attr({
+                        
+                        "href":post.id,
+                        "class":"btn btn-secondary"
+                    }).text('View Product')
                 ).appendTo('#grid');
                 //console.log($tr.wrap('<p>').html());
             });
