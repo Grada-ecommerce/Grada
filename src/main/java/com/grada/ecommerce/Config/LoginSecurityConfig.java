@@ -30,7 +30,7 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter
 
     protected void configure(HttpSecurity httpSecurity) throws Exception
     {
-        httpSecurity.authorizeRequests()
+       /* httpSecurity.authorizeRequests()
                 .antMatchers("/product").hasRole("ADMIN")
                 .and()
                 .formLogin().loginPage("/login")
@@ -38,7 +38,10 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter
                 .failureUrl("/login?error")
                 .usernameParameter("userName").passwordParameter("password")
                 .and()
-                .logout().logoutSuccessUrl("/login?logout");
+                .logout().logoutSuccessUrl("/login?logout"); */
+       httpSecurity.authorizeRequests()
+               .antMatchers("*")
+               .permitAll();
 
     }
 

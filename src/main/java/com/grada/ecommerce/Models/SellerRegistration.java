@@ -121,7 +121,5 @@ public class SellerRegistration {
         this.panno = panno;
     }
    
-   
-   
-   
+
 }

@@ -1,10 +1,8 @@
 package com.grada.ecommerce.Data;
 
-import com.grada.ecommerce.Models.Product;
-import com.grada.ecommerce.Models.ShortProduct;
-import org.springframework.data.repository.CrudRepository;
+import com.grada.ecommerce.Models.Product.Product;
+import com.grada.ecommerce.Models.Product.ShortProduct;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.repository.query.Param;
 
 import java.util.Collection;
 

@@ -1,9 +1,15 @@
 package com.grada.ecommerce;
 
+import com.grada.ecommerce.Data.BoughtRepository;
+import com.grada.ecommerce.Data.ReviewRepository;
 import com.grada.ecommerce.Data.SellsRepository;
-import com.grada.ecommerce.Models.Product;
-import com.grada.ecommerce.Models.Relations.Sells;
-import com.grada.ecommerce.Models.Seller;
+import com.grada.ecommerce.Data.UserRepository;
+import com.grada.ecommerce.Models.Product.Product;
+import com.grada.ecommerce.Models.Seller.Seller;
+import com.grada.ecommerce.Models.Seller.Sells;
+import com.grada.ecommerce.Models.User.Bought;
+import com.grada.ecommerce.Models.User.Review;
+import com.grada.ecommerce.Models.User.User;
 import com.grada.ecommerce.Services.ProductService;
 import com.grada.ecommerce.Services.SellerService;
 import org.springframework.boot.CommandLineRunner;
@@ -12,66 +18,72 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+
 @SpringBootApplication
-//@EnableAutoConfiguration(exclude = {org.springframework.boot.autoconfigure.security.SecurityDataConfiguration.class,
-//})
 @EnableNeo4jRepositories
-//@EntityScan("com.grada.ecommerce.Models")
 public class EcommerceApplication {
 
-	//@Autowired
-	//ProductRepository productRepository;
+
 	public static void main(String[] args)
 	{
 		SpringApplication.run(EcommerceApplication.class, args);
 	}
 
-/*	@Bean
-	CommandLineRunner demo(SellerService sellerService, ProductService productService, SellsRepository sellsRepository)
+	@Bean
+	CommandLineRunner demo(SellerService sellerService, ProductService productService, UserRepository userRepository, BoughtRepository boughtRepository
+                            ,ReviewRepository reviewRepository)
 	{
 		return args ->
 		{
+		    ///adding seller and adding an product
+            //start
+			Seller seller = new Seller("RandomSeller", 4.5f, "randomseller@random.com", 1234567890d,
+                    "1-123","Random Street","Random City", "Random State");
 
-            Seller seller = new Seller("New Seller", 4.3f, "fakemail@fakest.fake",999999999d);
-			sellerService.addSeller(seller);
-            //Product product = new Product("Fake Product", 400d,10, 3.2f,"Fake Description","fakeurl.com","fake company");
+			/*HashSet<String> imgUrl = new HashSet<>();
+			imgUrl.add("www.randomimage.com/image1.png");
+            imgUrl.add("www.randomimage.com/image2.png");
+            imgUrl.add("www.randomimage.com/image3.png"); */
+
+			String imgUrl = "www.randomimage.com/image1.png";
 
 
-            //productService.addProduct(product);
+            Product product = new Product("Random Product", 5.0f, "Random Description", imgUrl, "Random Brand");
 
-           /* Sells sells = new Sells();
-            sells.price = 100;
-            sells.product = product;
-            sells.seller = seller;
-
-            seller.Seller = sells;
+            Sells sells = new Sells();
+            sells.AddProductBySeller(product, seller, 10);
             sellerService.addSeller(seller);
-
-            sellsRepository.save(sells); */
-
-           /*Sells s = seller.SellerSells(product, 100);
-            System.out.println(s.price);
-           sellerService.addSeller(seller); */
+            //end
 
 
 
 
+            ///user buying an product
+            //start
+            User user = new User("Random User");
+            Bought bought = new Bought();
+            bought.UserBought(product, user, seller);
+
+            userRepository.save(user);
+            //end
+
+            ///user
 
 
 
-			//Seller seller = new Seller("Fake Sellers", 3.5f,"fakemail@fakeorg.com", 9999999999d);
+            //user reviewing an product
+            //start
+            //47 was an user id can change.
+            Bought  bought1 =  userRepository.findById(new Long(47)).get().bought.get(0);
+            Review review = new Review("Random Review Text",4.3f, "Random Review Summary",
+                    123456788d, "Random TIme");
+            bought1.UserReviewed(review);
+            boughtRepository.save(bought1);
+            //end
 
-			//Seller seller = sellerService.findSellerByName("Fake Sellers");
 
-
-
-			//run only once during database setup
-			/*Iterable<Product> products = productService.products();
-			products.forEach(product ->
-            {
-                product.Seller = seller;
-                productService.UpdateProduct(product);
-            }); */
 		};
-	//}
-//}
+	}
+}

@@ -1,8 +1,8 @@
 package com.grada.ecommerce.Services;
 
 import com.grada.ecommerce.Data.ProductRepository;
-import com.grada.ecommerce.Models.Product;
-import com.grada.ecommerce.Models.ShortProduct;
+import com.grada.ecommerce.Models.Product.Product;
+import com.grada.ecommerce.Models.Product.ShortProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

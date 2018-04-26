@@ -1,7 +1,6 @@
 package com.grada.ecommerce.Controllers;
 
-import com.grada.ecommerce.Models.Product;
-import com.grada.ecommerce.Models.Seller;
+import com.grada.ecommerce.Models.Product.Product;
 import com.grada.ecommerce.Services.ProductService;
 import com.grada.ecommerce.Services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
