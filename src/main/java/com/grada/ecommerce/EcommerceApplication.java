@@ -3,7 +3,6 @@ package com.grada.ecommerce;
 import com.grada.ecommerce.Data.BoughtRepository;
 import com.grada.ecommerce.Data.ReviewRepository;
 import com.grada.ecommerce.Data.UserRepository;
-import com.grada.ecommerce.Models.Customer.User;
 import com.grada.ecommerce.Services.ProductService;
 import com.grada.ecommerce.Services.SellerService;
 import org.springframework.boot.CommandLineRunner;
@@ -22,7 +21,7 @@ public class EcommerceApplication {
 		SpringApplication.run(EcommerceApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	CommandLineRunner demo(SellerService sellerService, ProductService productService, UserRepository userRepository, BoughtRepository boughtRepository
                             ,ReviewRepository reviewRepository)
 	{
@@ -76,6 +75,6 @@ public class EcommerceApplication {
             //end
 
 
-		};
-	}
+	//	};
+//	}
 }
