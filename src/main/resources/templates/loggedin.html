@@ -40,7 +40,9 @@
                 <a class="nav-link" th:href="@{/policy}">Seller Policies</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" th:href="@{/}">Logout</a>
+                <form th:action = "@{/logout}" method="post">    
+                <input type ="submit" value ="logout"/>
+               </form>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">

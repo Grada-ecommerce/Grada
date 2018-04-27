@@ -19,7 +19,7 @@ public class Cart
     public int cartQuantity = getCartQuantitiy();
 
     @Relationship(type = "HAS", direction = Relationship.INCOMING)
-    public List<Product> productList;
+    List<Product> productList;
 
     public double getCartPrice()
     {

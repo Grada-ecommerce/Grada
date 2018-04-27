@@ -29,22 +29,12 @@ public class WishlistService
 
         Customer customer = customerService.FindCustomerByID(customerid);
         //customer.wishList.
-        customer.wishList.productList.add(tempProduct);
 
-    }
 
-    public void DeleteProduct(Long productid, Long customerid)
-    {
-        Product tempProduct = productService.findProductByID(productid);
 
-        if(tempProduct == null)
-            return;
 
-        Customer customer = customerService.FindCustomerByID(customerid);
 
-        if(customer.wishList.productList.contains(tempProduct))
-            customer.wishList.productList.remove(tempProduct);
-        return;
+
     }
 
 
