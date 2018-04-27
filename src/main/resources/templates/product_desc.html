@@ -1,19 +1,54 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Description</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <title>Seller Sign-up</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D"
             crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(document).validate({
+                rules: {
+                    item_name: {
+                        required: true
+                    },
+                    color: {
+                        required: true
+                    },
+                    amount: {
+                        required: false
+                    },
+                    quantity: {
+                        required: true,
+                        maxlength: 6,
+                        number: true,
+                        min: 1
+                    }
+                },
+
+                messages: {
+                    quantity: {
+                        number: "Numbers only",
+                        min: "Please enter a quantity of 1 or more"
+                    }
+
+                },
+                submitHandler: function (form) {
+                    form.submit();
+                }
+            });
+
+        });
+
+    </script>
 </head>
 <body>
-
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Grada</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -28,6 +63,15 @@
                     <span class="sr-only">(current)</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link">My Best Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/policy}">Seller Policies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/}">Logout</a>
+            </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -36,15 +80,50 @@
     </div>
 </nav>
 
-<div class="container text-center">
-        <div class="col-lg-3 col-sm-12 col-md-6 my-2 p-auto html-editor-align-center" th:object="${product}">
-            <img src="http://via.placeholder.com/150x150/888/111" th:src="${product.imgUrl}" alt="img" class="img-fluid">
-            <div class="card-title lead" th:text="${product.title}">Some product name</div>
-            <div class="card-text">Price: &#8377;<span th:text="${product.getPrice()}">400</span></div>
+<div id="border">
+    <table border="0" cellspacing="0" cellpadding="10" summary="text/html">
+        <tr>
+            <td width="797" valign="top"><div id="info-links">
+            </div>
+                <h3>Some product Name</h3>
+                <hr />
+                <table width="100%" border="0" cellspacing="2" cellpadding="10" summary="text/html">
+                    <tr>
+                        <td valign="top" width="292" align="center" style="padding-left:6px; padding-right:6px;"><div align="center"><a href="images/footwear/001_l.jpg" rel="lightbox" title="Portwest Steelite Lusum Safety Trainer | FW34"><img src="" alt="Our e-commerce product" /></a></div></td>
+                        <td valign="top"><li><span><strong>Some metadata of the product</strong></span></li>
 
-        </div>
-
+                            <p><strong>Product Details:</strong><br />
+                                <br />
+                                <strong>Other Specifications</strong> </p>
+                            <form action="" method="post" name="" id="">
+                                <div>
+                                    <select name="item_name">
+                                        <option value="" selected="selected">- Select Size -</option>
+                                        <option value="">Choose from the option given below </option>
+                                        <option value="">Other options</option>
+                                    </select>
+                                </div>
+                                <input type="hidden" name="item_number" value="" />
+                                <div style="margin-top:6px;">
+                                    <select name="color" >
+                                        <option value="" selected="selected">- Select Colour -</option>
+                                        <option value="Black/Yellow">Available colors of the product </option>
+                                    </select>
+                                </div>
+                                <div style="margin-top:6px;">
+                                    <span class="strong">Quantity:</span>
+                                    <input type="number" name="quantity" style="width:25px" value="" maxlength="6" autocomplete="off" />
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm">Add to Cart</button>
+                            </form>
+                            <br />
+                        </td>
+                    </tr>
+                </table>
+                <hr />
+            </td>
+        </tr>
+    </table>
 </div>
-
 </body>
 </html>

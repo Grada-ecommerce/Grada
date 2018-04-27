@@ -11,34 +11,6 @@
         crossorigin="anonymous"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
-    <script type="text/javascript">
-        $(document).ready(function(){
-            console.log('blabla');
-            $("#submitbtn").click(function(){
-                console.log('la');      //JSON.stringify converts json object to a string which is then sent to server. JSON.parse converts a string recieved from server to json object. JSON has key value pairs where keys are always strings
-                $.ajax({
-                    url: "http://localhost:8080/api/seller/add",
-                    type: "POST",
-                    contentType: "application/json",
-                    data: JSON.stringify({"username": $('#username').text(), "password": $('#password').text(), "name": $('#name').text(),
-                        "email": $('#email').text(),"aadharno": parseInt($('#aadharno').text()),"panno": $('#panno').text(),"gstno": $('#gstno').text(),
-                        "HouseNumber": $('#HouseNumber').text(),"Street": $('#Street').text(),"City": $('#City').text(),"State": $('#State').text(),
-                        "bankaccountno": parseInt($('#bankaccountno').text()),"PhoneNumber": $('#PhoneNumber').text(),"bankifsccode": $('#bankifsccode').text()}),
-                    dataType: "text",
-                    success: function(result){
-                        //alert(result);
-                        console.log(result);
-                    },
-                    error(jqXHR, status, errorThrown){
-                        //alert(status);
-                        console.log(status);
-                        console.log(jqXHR);
-                        console.log(errorThrown);
-                    }});
-            });
-            $('')
-        });
-    </script>
 </head>
 
 <body>
