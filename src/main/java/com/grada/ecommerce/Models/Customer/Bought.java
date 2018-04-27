@@ -21,7 +21,7 @@ public class Bought
     public Product product;
 
     @Relationship(type = "BOUGHT", direction = Relationship.INCOMING)
-    public User user;
+    public Customer Customer;
 
     @Relationship(type = "SOLDBY", direction = Relationship.INCOMING)
     public Seller seller;
@@ -29,18 +29,18 @@ public class Bought
     @Relationship(type = "RATEDANDREVIEWED", direction = Relationship.OUTGOING)
     public Review review;
 
-    public boolean UserBought(Product product, User user, Seller seller)
+    public boolean CustomerBought(Product product, Customer Customer, Seller seller)
     {
         this.product = product;
-        this.user = user;
+        this.Customer = Customer;
         this.seller = seller;
-        //product.boughtBy.add(user);
+        //product.boughtBy.add(Customer);
         seller.soldProducts.add(this);
-        user.bought.add(this);
+        Customer.bought.add(this);
         return true;
     }
 
-    public boolean UserReviewed(Review rev)
+    public boolean CustomerReviewed(Review rev)
     {
         this.review = rev;
         rev.bought = this;
