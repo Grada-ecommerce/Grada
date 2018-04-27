@@ -72,4 +72,9 @@ public class ProductService
 
         return product.get();
     }
+    
+     public ShortProduct findProductByProductId(String pid)
+    {
+     return productRepository.findProductByProductid(pid);
+    }
 }
