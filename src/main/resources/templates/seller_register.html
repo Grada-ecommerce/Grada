@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Seller Sign-up</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            console.log('blabla');
+            $("#submitbtn").click(function(){
+                console.log('la');      //JSON.stringify converts json object to a string which is then sent to server. JSON.parse converts a string recieved from server to json object. JSON has key value pairs where keys are always strings
+                $.ajax({
+                    url: "http://localhost:8080/api/seller/add",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify({"username": $('#username').text(), "password": $('#password').text(), "name": $('#name').text(),
+                        "email": $('#email').text(),"aadharno": parseInt($('#aadharno').text()),"panno": $('#panno').text(),"gstno": $('#gstno').text(),
+                        "HouseNumber": $('#HouseNumber').text(),"Street": $('#Street').text(),"City": $('#City').text(),"State": $('#State').text(),
+                        "bankaccountno": parseInt($('#bankaccountno').text()),"PhoneNumber": $('#PhoneNumber').text(),"bankifsccode": $('#bankifsccode').text()}),
+                    dataType: "text",
+                    success: function(result){
+                        //alert(result);
+                        console.log(result);
+                    },
+                    error(jqXHR, status, errorThrown){
+                        //alert(status);
+                        console.log(status);
+                        console.log(jqXHR);
+                        console.log(errorThrown);
+                    }});
+            });
+            $('')
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Grada</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">My Best Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/policy}">Seller Policies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Logout</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <a class="btn btn-outline-success my-2 my-sm-0" href="file:///home/madhav/SPM/Grada/public_html/product.html">Search</a>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <p class="display-4">Sellers! Sign Up!</p>
+        </div>
+        <div class="row justify-content-center m-auto">
+            <form class="form">
+                <div class="form-row text-center">
+                    <div class="col">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" th:name="username" id="username" required autofocus>
+                    </div>
+                    <div class="col">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" th:name="password" id="password" required>
+                    </div>
+                    <div class="col">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" th:name="name" id="name" required>
+                    </div>
+                </div>
+                <div class="form-row text-center">
+                    <div class="col">
+                        <label for="email">E-mail</label>
+                        <input type="text" th:name="email" class="form-control" id="email" required>
+
+                    </div>
+                </div>
+                <br>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="aadharno">Aadhar</label>
+                        <input type="text" th:name="aadharno" class="form-control" id="aadharno" required>
+                    </div>
+                    <div class="col">
+                        <label for="panno">Pan Number</label>
+                        <input type="text" th:name="panno" class="form-control" id="panno" required>
+                    </div>
+                    <div class="col">
+                        <label for="gstno">GST Number</label>
+                        <input type="text" th:name="gstno" class="form-control" id="gstno" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="HouseNumber">House No</label>
+                        <input type="text" th:name="HouseNumber" class="form-control" id="HouseNumber">
+                    </div>
+                    <div class="col">
+                        <label for="Street">Street</label>
+                        <input type="text" th:name="Street" class="form-control" id="Street">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="City">City</label>
+                        <input type="text" th:name="City" class="form-control" id="City" required>
+                    </div>
+                    <div class="col">
+                        <label for="State">State</label>
+                        <input type="text" th:name="State" class="form-control" id="State" required>
+                    </div>
+                </div>
+                <div class="form-row">
+
+                    <div class="col">
+                        <label for="bankaccountno">Bank A/c No</label>
+                        <input type="number" th:name="bankaccountno" class="form-control" id="bankaccountno" required>
+                    </div>
+                    <div class="col">
+                        <label for="PhoneNumber">Phone No</label>
+                        <input type="text" th:name="PhoneNumber" class="form-control" id="PhoneNumber">
+                    </div>
+                    <div class="col">
+                        <label for="bankifsccode">IFSC Code</label>
+                        <input type="text" th:name="bankifsccode" class="form-control" id="bankifsccode" required>
+                    </div>
+                </div>
+                <br class="my-2">
+                <div class="form-row justify-content-center m-auto">
+                    <button class="btn btn-primary" type="button" id="submitbtn">Submit</button>
+                    <a href="@{/}" class="btn btn-danger">Abort</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

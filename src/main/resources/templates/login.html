@@ -2,11 +2,12 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login Page</title>
+    <title>User Login Page</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
 
 <body class="text-center">
 <form class="form-signin" method="post" th:action="@{/login}">
@@ -25,11 +26,10 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        <a th:href="@{register}" class="text-right">Register Now</a>
+        <a th:href="@{seller_register}" class="text-right">Register Now</a>
     </div>
 </form>
 </div>
 
-</body>
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>CheckoutPage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D"
@@ -68,7 +69,7 @@
 
                         <h1>Shopping cart</h1>
                         <p class="text-muted">Products in your cart</p>
-                        <div th:each="product:$(products)" class="table-responsive" >
+                        <div th:each="product:${products}" class="table-responsive" >
                             <table class="table">
                                 <thead>
                                 <tr>
@@ -83,7 +84,7 @@
                                 <tr>
                                     <td>
                                         <a href="#">
-                                            <img src=http://via.placeholder.com/150x150/888/111"" th:src="$(product.html)"  alt="img">
+                                            <img src=http://via.placeholder.com/150x150/888/111"" th:src="${product.html}"  alt="img">
                                         </a>
                                     </td>
                                     <td><a href="#"></a>
@@ -91,9 +92,9 @@
                                     <td>
                                         <input type="number" value="2" class="form-control">
                                     </td>
-                                    <td><span th:text="$(product.price)">Some price</span></td>
-                                    <td><span th:text="$(product.price)">Some discount</span></td>
-                                    <td><span th:text="$(product.price)">Effective Price</span></td>
+                                    <td><span th:text="${product.price}">Some price</span></td>
+                                    <td><span th:text="${product.price}">Some discount</span></td>
+                                    <td><span th:text="${product.price}">Effective Price</span></td>
                                     <td><a href="#"><i class="fa fa-trash-o"></i></a></td>
                                     </td>
                                 </tr>
@@ -140,22 +141,22 @@
                                 <div class="flipper">
                                     <div class="front">
                                         <a href="">
-                                            <img src=http://via.placeholder.com/150x150/888/111"" th:src="$(product.html)"  alt="img">
+                                            <img src=http://via.placeholder.com/150x150/888/111"" th:src="${product.html}"  alt="img">
                                         </a>
                                     </div>
                                     <div class="back">
                                         <a href="">
-                                            <img src=http://via.placeholder.com/150x150/888/111"" th:src="$(product.html)"  alt="img">
+                                            <img src=http://via.placeholder.com/150x150/888/111"" th:src="${product.html}"  alt="img">
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <a href="detail.html" class="invisible">
-                                <img src=http://via.placeholder.com/150x150/888/111"" th:src="$(product.html)"  alt="img">
+                                <img src=http://via.placeholder.com/150x150/888/111"" th:src="${product.html}"  alt="img">
                             </a>
                             <div class="text">
                                 <h3>Item</h3>
-                                <p class="price"><span th:text="$(product.price)">Total Price</span></p>
+                                <p class="price"><span th:text="${product.price}">Total Price</span></p>
                             </div>
                         </div>
                         <!-- /.product -->
@@ -167,18 +168,18 @@
                                 <div class="flipper">
                                     <div class="front">
                                         <a href="">
-                                            <img src=http://via.placeholder.com/150x150/888/111"" th:src="$(product.html)"  alt="img">
+                                            <img src=http://via.placeholder.com/150x150/888/111"" th:src="${product.html}"  alt="img">
                                         </a>
                                     </div>
                                     <div class="back">
                                         <a href="detail.html">
-                                            <img src=http://via.placeholder.com/150x150/888/111"" th:src="$(product.html)"  alt="img">
+                                            <img src=http://via.placeholder.com/150x150/888/111"" th:src="${product.html}"  alt="img">
                                         </a>
                                     </div>
                                 </div>
                             </div>
                             <a href="detail.html" class="invisible">
-                                <img src=http://via.placeholder.com/150x150/888/111"" th:src="$(product.html)"  alt="img">
+                                <img src=http://via.placeholder.com/150x150/888/111"" th:src="${product.html}"  alt="img">
                             </a>
                             <div class="text">
                                 <h3>Fur coat</h3>
@@ -209,19 +210,19 @@
                             <tbody>
                             <tr>
                                 <td>Order subtotal</td>
-                                <th><span th:text="$(product.price)">Some price</span></th>
+                                <th><span th:text="${product.price}">Some price</span></th>
                             </tr>
                             <tr>
                                 <td>Shipping and handling</td>
-                                <th><span th:text="$(product.price)">Some price</span></th>
+                                <th><span th:text="${product.price}">Some price</span></th>
                             </tr>
                             <tr>
                                 <td>Tax</td>
-                                <th><span th:text="$(product.price)">Some price</span></th>
+                                <th><span th:text="${product.price}">Some price</span></th>
                             </tr>
                             <tr class="total">
                                 <td>Total</td>
-                                <th>$<span th:text="$(product.price)">Some price</span>0</th>
+                                <th>$<span th:text="${product.price}">Some price</span>0</th>
                             </tr>
                             </tbody>
                         </table>
