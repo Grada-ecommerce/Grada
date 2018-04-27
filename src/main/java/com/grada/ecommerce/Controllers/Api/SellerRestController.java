@@ -44,6 +44,7 @@ public class SellerRestController
         if(seller == null)
             return "Seller not found";
 
+
         sellerService.deleteSeller(seller);
         return "Deleted Seller";
 
