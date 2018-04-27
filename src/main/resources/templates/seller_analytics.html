@@ -25,7 +25,7 @@
                     data: JSON.stringify({"Col1":"WXYZ"}),
                     //dataType: "html",
                     beforeSend: function( xhr ) {
-                        xhr.setRequestHeader("Authorization","Bearer I5ue4xZi730Y01cHt3CSJYCI4Hfv+QjZ+Z43kl+fz0ANa6qjg4lx+ZPZbgzwiQ/26d/vipUqgagini3xxIOpng==");
+                        xhr.setRequestHeader("Authorization","Bearer 7YjW3kxTq5UbB3W//RC6jbtLwvs479+stPKbV+8ZjMDwdsp5yu7r+9NAjBsNagqu4rlhngnAKQXFygKk3SJQwQ==");
                         xhr.setRequestHeader("Access-Control-Allow-Origin","*");
                         xhr.setRequestHeader("Access-Control-Allow-Methods","GET, OPTIONS");
                         xhr.setRequestHeader("Access-Control-Allow-Headers","Authorization, X-Requested-With, Content-Type, Origin, Accept");
@@ -86,6 +86,12 @@
 </div>
 <div class="text-center">
     <button class="btn btn-lg btn-primary" type="button" id="submitbtn">Get your Analytics!</button>
+</div>
+<div class="container jumbotron" id="similar">
+    <!--List of similar sellers-->
+</div>
+<div class="container jumbotron" id="popular">
+    <!--List of popular products of a seller-->
 </div>
 </body>
 </html>

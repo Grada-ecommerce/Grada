@@ -1,6 +1,7 @@
 package com.grada.ecommerce.Models.Product;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.grada.ecommerce.Models.Customer.Review;
 import com.grada.ecommerce.Models.Seller.Sells;
 import com.grada.ecommerce.Models.Customer.Customer;
@@ -37,7 +38,6 @@ public class Product
 
     public String company;
     //public Set<String> imgUrl;
-
     public String imgUrl;
 
     public String getProductid() {
@@ -92,7 +92,7 @@ public class Product
     //for showing seller and price in product page
     //public Map<ShortSeller, Double> sellerWithPrice= new HashMap<>();
 
-    //@JsonIgnore
+    @JsonIgnore
     @Relationship(type = "SELLS", direction = Relationship.INCOMING)
     public Set<Sells> Sellers= new HashSet<Sells>();
 

@@ -13,8 +13,8 @@ public class CustomerRestController
     CustomerService CustomerService;
 
 
-    @RequestMapping("/api/Customer")
-    public Customer GetCustomer(@RequestParam(value = "id", defaultValue = "0") long id)
+    @RequestMapping("/api/customer/{id}")
+    public Customer GetCustomer(@PathVariable(value = "id") long id)
     {
         Customer Customer = CustomerService.FindCustomerByID(id);
         if(Customer == null)
@@ -23,7 +23,7 @@ public class CustomerRestController
         return Customer;
     }
 
-    @RequestMapping(value = "api/Customer/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/customer/add", method = RequestMethod.POST)
     public String AddCustomer(@RequestBody Customer Customer)
     {
         if(Customer == null )
@@ -32,7 +32,7 @@ public class CustomerRestController
         return "Customer added";
     }
 
-    @RequestMapping("api/Customer/delete")
+    @RequestMapping("/api/customer/delete")
     public String DeleteCustomer(@RequestParam(value = "id", defaultValue = "0") long id)
     {
 
@@ -46,7 +46,7 @@ public class CustomerRestController
     }
 
     //breaks
-    @RequestMapping(value = "api/Customer/edit", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/customer/edit", method = RequestMethod.POST)
     public Customer EditCustomer(@RequestBody Customer Customer)
     {
         if(Customer.id < 0)
@@ -60,11 +60,6 @@ public class CustomerRestController
         CustomerService.AddCustomer(Customer);
         return Customer;
     }
-
-
-
-
-
 
 
 }
