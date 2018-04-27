@@ -1,4 +1,4 @@
-package com.grada.ecommerce.Models.User;
+package com.grada.ecommerce.Models.Customer;
 
 import com.grada.ecommerce.Models.Product.Product;
 import com.grada.ecommerce.Models.Seller.Seller;
@@ -17,7 +17,7 @@ public class Bought
     @GeneratedValue
     public Long id;
 
-    @Relationship(type = "BOUGHT", direction = Relationship.INCOMING)
+    @Relationship(type = "BOUGHT", direction = Relationship.OUTGOING)
     public Product product;
 
     @Relationship(type = "BOUGHT", direction = Relationship.INCOMING)

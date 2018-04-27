@@ -1,14 +1,11 @@
 package com.grada.ecommerce.Models.Seller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.grada.ecommerce.Models.Product.Product;
-import com.grada.ecommerce.Models.User.Bought;
-import com.grada.ecommerce.Models.User.Review;
+import com.grada.ecommerce.Models.Customer.Bought;
+import com.grada.ecommerce.Models.Customer.Review;
 import org.neo4j.ogm.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @NodeEntity
@@ -20,11 +17,11 @@ public class Seller
 
     }
 
-    public Seller(String username, String password, String name, float rating, String emailAddress, int aadhar, String phoneNumber, String houseNumber, String street, String city, String state,
-                  String panno, String gstno, int bankaccountno, String bankifsccode)
+    public Seller(String name, float rating, String emailAddress, Long aadhar, Long phoneNumber, String houseNumber, String street, String city, String state,
+                  String panno, String gstno, Long bankaccountno, String bankifsccode)
     {
-        this.username = username;
-        this.password = password;
+        //this.username = username;
+        //this.password = password;
         this.name = name;
         this.Rating = rating;
         this.email = emailAddress;
@@ -41,16 +38,14 @@ public class Seller
     }
 
     @Id @GeneratedValue public Long ID;
-    public String username;
-    public String password;
 
     public String name;
 
     public float Rating;
 
     public String email;
-    public int aadharno;
-    public String PhoneNumber;
+    public Long aadharno;
+    public Long PhoneNumber;
 
     public String HouseNumber;
     public String Street;
@@ -58,7 +53,7 @@ public class Seller
     public String State;
     public String panno;
     public String gstno;
-    public int bankaccountno;
+    public Long bankaccountno;
     public String bankifsccode;
     @Relationship(type = "SELLS", direction = Relationship.OUTGOING)
     public Set<Sells> Products = new HashSet<Sells>();

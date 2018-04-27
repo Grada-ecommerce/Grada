@@ -1,4 +1,4 @@
-package com.grada.ecommerce.Models.User;
+package com.grada.ecommerce.Models.Customer;
 
 import org.neo4j.ogm.annotation.GeneratedValue;
 import org.neo4j.ogm.annotation.Id;

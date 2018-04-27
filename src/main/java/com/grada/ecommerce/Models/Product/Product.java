@@ -1,11 +1,9 @@
 package com.grada.ecommerce.Models.Product;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.grada.ecommerce.Models.User.Review;
+import com.grada.ecommerce.Models.Customer.Review;
 import com.grada.ecommerce.Models.Seller.Sells;
-import com.grada.ecommerce.Models.Seller.ShortSeller;
-import com.grada.ecommerce.Models.User.User;
+import com.grada.ecommerce.Models.Customer.Customer;
 import org.neo4j.ogm.annotation.*;
 
 
@@ -94,7 +92,7 @@ public class Product
     public Set<Review> reviews = new HashSet<Review>();
 
     //@Relationship(type = "BOUGHT", direction = Relationship.OUTGOING)
-    //public Set<User> boughtBy = new HashSet<User>();
+    //public Set<Customer> boughtBy = new HashSet<Customer>();
 
 
 }

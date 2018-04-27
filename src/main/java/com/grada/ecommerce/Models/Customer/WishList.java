@@ -1,4 +1,4 @@
-package com.grada.ecommerce.Models.User;
+package com.grada.ecommerce.Models.Customer;
 
 import com.grada.ecommerce.Models.Product.Product;
 import org.neo4j.ogm.annotation.Relationship;
