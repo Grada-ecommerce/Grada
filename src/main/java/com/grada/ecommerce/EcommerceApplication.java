@@ -2,8 +2,8 @@ package com.grada.ecommerce;
 
 import com.grada.ecommerce.Data.BoughtRepository;
 import com.grada.ecommerce.Data.ReviewRepository;
-import com.grada.ecommerce.Data.UserRepository;
-import com.grada.ecommerce.Models.Customer.User;
+import com.grada.ecommerce.Data.CustomerRepository;
+import com.grada.ecommerce.Models.Customer.Customer;
 import com.grada.ecommerce.Services.ProductService;
 import com.grada.ecommerce.Services.SellerService;
 import org.springframework.boot.CommandLineRunner;
@@ -23,7 +23,7 @@ public class EcommerceApplication {
 	}
 
 	@Bean
-	CommandLineRunner demo(SellerService sellerService, ProductService productService, UserRepository userRepository, BoughtRepository boughtRepository
+	CommandLineRunner demo(SellerService sellerService, ProductService productService, CustomerRepository CustomerRepository, BoughtRepository boughtRepository
                             ,ReviewRepository reviewRepository)
 	{
 		return args ->
@@ -52,26 +52,26 @@ public class EcommerceApplication {
 
 
 
-            ///user buying an product
+            ///Customer buying an product
             //start
-          /*  Customer user = new Customer("Random Customer");
+          /*  Customer Customer = new Customer("Random Customer");
             Bought bought = new Bought();
-            bought.UserBought(product, user, seller);
+            bought.CustomerBought(product, Customer, seller);
 
-            userRepository.save(user); */
+            CustomerRepository.save(Customer); */
             //end
 
-            ///user
+            ///Customer
 
 
 
-            //user reviewing an product
+            //Customer reviewing an product
             //start
-            //47 was an user id can change.
-            /*Bought  bought1 =  userRepository.findById(new Long(65)).get().bought.get(0);
+            //47 was an Customer id can change.
+            /*Bought  bought1 =  CustomerRepository.findById(new Long(65)).get().bought.get(0);
             Review review = new Review("Random Review Text",4.3f, "Random Review Summary",
                     123456788d, "Random TIme");
-            bought1.UserReviewed(review);
+            bought1.CustomerReviewed(review);
             boughtRepository.save(bought1); */
             //end
 
