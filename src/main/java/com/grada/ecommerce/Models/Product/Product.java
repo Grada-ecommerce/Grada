@@ -17,8 +17,8 @@ public class Product
     {
     }
 
-    public Product(String title, float rating, String description, String url, String company)
-    {
+    public Product(String productid,String title, float rating, String description, String url, String company)
+    {   this.productid = productid;
         this.title  = title;
         this.rating = rating;
         this.Description = description;
@@ -29,7 +29,7 @@ public class Product
     @Id
     @GeneratedValue
     private Long id;
-
+    public String productid;
     public String title;
 
     public float rating;
@@ -39,6 +39,14 @@ public class Product
     //public Set<String> imgUrl;
 
     public String imgUrl;
+
+    public String getProductid() {
+        return productid;
+    }
+
+    public void setProductid(String productid) {
+        this.productid = productid;
+    }
 
 
     @Override
