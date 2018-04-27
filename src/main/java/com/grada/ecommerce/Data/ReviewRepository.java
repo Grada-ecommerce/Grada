@@ -1,9 +1,9 @@
 package com.grada.ecommerce.Data;
 
-import com.grada.ecommerce.Models.Review;
-import org.springframework.data.repository.PagingAndSortingRepository;
+import com.grada.ecommerce.Models.Customer.Review;
+import org.springframework.data.repository.CrudRepository;
 
-public interface ReviewRepository extends PagingAndSortingRepository<Review, Long>
+public interface ReviewRepository extends CrudRepository<Review, Long>
 {
 
 }

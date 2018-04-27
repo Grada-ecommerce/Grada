@@ -5,6 +5,7 @@
  */
 package com.grada.ecommerce.Models;
 
+import com.grada.ecommerce.Models.Product.Product;
 import java.util.HashSet;
 
 /**

@@ -1,7 +1,6 @@
 package com.grada.ecommerce.Controllers;
 
-import com.grada.ecommerce.Models.Product;
-import com.grada.ecommerce.Models.Seller;
+import com.grada.ecommerce.Models.Product.Product;
 import com.grada.ecommerce.Services.ProductService;
 import com.grada.ecommerce.Services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,9 +31,32 @@ public class ProductController
     {
         Iterable<Product> products  = productService.products();
         model.addAttribute("products", products);
-        return "loggedin";
+        return "index";
     }
-
+    //do not delete
+    @RequestMapping(value = "/user-register")
+    public String UserRegister(Model model)
+    {
+        //Iterable<Product> products  = productService.products();
+        //model.addAttribute("products", products);
+        return "user_register";
+    }
+    //do not delete
+    @RequestMapping(value = "/seller-register")
+    public String SellerRegister(Model model)
+    {
+        //Iterable<Product> products  = productService.products();
+        //model.addAttribute("products", products);
+        return "seller_register";
+    }
+    //do not delete
+    @RequestMapping(value = "/seller-analytics")
+    public String SellerAna(Model model)
+    {
+        //Iterable<Product> products  = productService.products();
+        //model.addAttribute("products", products);
+        return "seller_analytics";
+    }
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public String ShowProduct(@PathVariable("id") Product product, Model model)
     {
@@ -45,7 +67,7 @@ public class ProductController
         //    return "redirect:/";
         model.addAttribute("product", product);
         System.out.println(product.title);
-        return "productid";
+        return "product_desc";
     }
 
 

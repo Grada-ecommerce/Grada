@@ -1,7 +1,8 @@
 package com.grada.ecommerce.Services;
 
 import com.grada.ecommerce.Data.SellerRepository;
-import com.grada.ecommerce.Models.Seller;
+import com.grada.ecommerce.Models.Product.Product;
+import com.grada.ecommerce.Models.Seller.Seller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -66,4 +67,5 @@ public class SellerService
         sellerRepository.delete(seller);
         return true;
     }
+
 }

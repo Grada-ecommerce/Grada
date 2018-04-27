@@ -1,6 +1,6 @@
 package com.grada.ecommerce.Data;
 
-import com.grada.ecommerce.Models.Seller;
+import com.grada.ecommerce.Models.Seller.Seller;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
