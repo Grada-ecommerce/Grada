@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("api/admin")
 @RestController
 public class AdminRestController {
-    @RequestMapping("/")
+  /*  @RequestMapping("/")
     public Iterable<> getDataApis()
    {  Iterable<> 
         return 
-    }
+    }*/
 }
