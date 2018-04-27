@@ -3,7 +3,12 @@ package com.grada.ecommerce;
 import com.grada.ecommerce.Data.BoughtRepository;
 import com.grada.ecommerce.Data.ReviewRepository;
 import com.grada.ecommerce.Data.CustomerRepository;
+import com.grada.ecommerce.Models.Customer.Bought;
 import com.grada.ecommerce.Models.Customer.Customer;
+import com.grada.ecommerce.Models.Customer.Review;
+import com.grada.ecommerce.Models.Product.Product;
+import com.grada.ecommerce.Models.Seller.Seller;
+import com.grada.ecommerce.Models.Seller.Sells;
 import com.grada.ecommerce.Services.ProductService;
 import com.grada.ecommerce.Services.SellerService;
 import org.springframework.boot.CommandLineRunner;
@@ -54,7 +59,8 @@ public class EcommerceApplication {
 
             ///Customer buying an product
             //start
-          /*  Customer Customer = new Customer("Random Customer");
+           /* Customer Customer = new Customer("Random Customer", "customermail@mail.com", 123456789,
+                    "1-123","customer street","customer city", "customer state" );
             Bought bought = new Bought();
             bought.CustomerBought(product, Customer, seller);
 
@@ -72,7 +78,7 @@ public class EcommerceApplication {
             Review review = new Review("Random Review Text",4.3f, "Random Review Summary",
                     123456788d, "Random TIme");
             bought1.CustomerReviewed(review);
-            boughtRepository.save(bought1); */
+            boughtRepository.save(bought1);  */
             //end
 
 

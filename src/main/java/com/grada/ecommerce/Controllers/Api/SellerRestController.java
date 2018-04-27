@@ -13,18 +13,19 @@ public class SellerRestController
     @Autowired
     SellerService sellerService;
 
-    @RequestMapping("/api/seller")
-    public Seller GetSeller(@RequestParam(value = "id", defaultValue = "0") long id)
+    @RequestMapping("/api/seller/{id}")
+    public Seller GetSeller(@PathVariable("id") long id)
     {
         Seller seller = sellerService.findSellerById(id);
-
+        //System.out.println(id);
         if(seller == null)
-            return sellerService.findSellerById(0);
+            return sellerService.findSellerById(id);
 
         return seller;
     }
 
-    @RequestMapping(value = "api/seller/add", method = RequestMethod.POST)
+    //not working
+    @RequestMapping(value = "/api/seller/add/", method = RequestMethod.POST)
     public String AddSeller(@RequestBody Seller seller)
     {
         System.out.println(seller.name);
@@ -34,7 +35,7 @@ public class SellerRestController
         return "Seller added";
     }
 
-    @RequestMapping("api/seller/delete")
+    @RequestMapping("/api/seller/delete")
     public String DeleteSeller(@RequestParam(value = "id", defaultValue = "0") long id)
     {
         if(id == 0)
@@ -51,7 +52,7 @@ public class SellerRestController
     }
 
     //breaks
-    @RequestMapping(value = "api/seller/edit", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/seller/edit", method = RequestMethod.POST)
     public Seller EditSeller(@RequestBody Seller seller)
     {
         if(seller.ID < 0)

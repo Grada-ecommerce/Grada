@@ -1,6 +1,7 @@
 package com.grada.ecommerce.Models.Seller;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.grada.ecommerce.Models.Customer.Bought;
 import com.grada.ecommerce.Models.Customer.Review;
 import org.neo4j.ogm.annotation.*;
@@ -20,8 +21,6 @@ public class Seller
     public Seller(String name, float rating, String emailAddress, Long aadhar, Long phoneNumber, String houseNumber, String street, String city, String state,
                   String panno, String gstno, Long bankaccountno, String bankifsccode)
     {
-        //this.username = username;
-        //this.password = password;
         this.name = name;
         this.Rating = rating;
         this.email = emailAddress;
@@ -55,14 +54,16 @@ public class Seller
     public String gstno;
     public Long bankaccountno;
     public String bankifsccode;
+
+    @JsonIgnore
     @Relationship(type = "SELLS", direction = Relationship.OUTGOING)
     public Set<Sells> Products = new HashSet<Sells>();
 
+    @JsonIgnore
     @Relationship(type = "SOLDBY", direction = Relationship.OUTGOING)
     public Set<Bought> soldProducts = new HashSet<Bought>();
 
     //used for updating the ratings with less cost
-    @JsonIgnore
     public long NumRatings;
 
     @Relationship(type = Relationship.INCOMING)

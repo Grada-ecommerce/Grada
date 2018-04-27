@@ -9,22 +9,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequestMapping("/user/cart")
 @RestController
-public class CartController
+public class CartRestController
 {
     final CartService cartService;
 
     @Autowired
-    public CartController(CartService cartService)
+    public CartRestController(CartService cartService)
     {
         this.cartService = cartService;
     }
 
+    @RequestMapping("/add")
+    public void AddProduct(Long productid, Long customerid)
+    {
+        cartService.AddProduct(productid, customerid);
+    }
 
-
-
-
-
-
-
+    @RequestMapping("/delete")
+    public void DeleteProduct(Long productid, Long customerid)
+    {
+        cartService.DeleteProduct(productid, customerid);
+    }
 
 }
