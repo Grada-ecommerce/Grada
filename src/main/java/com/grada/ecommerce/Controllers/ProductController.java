@@ -32,7 +32,7 @@ public class ProductController
     {
         Iterable<Product> products  = productService.products();
         model.addAttribute("products", products);
-        return "product_grid";
+        return "loggedin";
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
