@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Products</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js" integrity="sha384-feJI7QwhOS+hwpX2zkaeJQjeiwlhOP+SdQDqhgvvo1DsjtiSQByFdThsxO669S2D"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Grada</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" href="#">Home
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link">My Best Products</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/policy}">Seller Policies</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/}">Logout</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <a class="btn btn-outline-success my-2 my-sm-0" href="file:///home/madhav/SPM/Grada/public_html/product.html">Search</a>
+            </form>
+        </div>
+    </nav>
+    <div class="container">
+        <div class="jumbotron text-center">
+            <p class="display-4">Sign-Up</p>
+        </div>
+        <div class="row justify-content-center m-auto">
+            <form method="post" th:action="@{/register}" class="form">
+                <div class="form-row text-center">
+                    <div class="col">
+                        <label for="fname">First</label>
+                        <input type="text" class="form-control" th:name="fname">
+                    </div>
+                    <div class="col">
+                        <label for="lname">Last</label>
+                        <input type="text" class="form-control" name="">
+                    </div>
+                    <div class="col">
+                        <label for="middle">Middle</label>
+                        <input type="text" class="form-control" name="">
+                    </div>
+                </div>
+                <br>
+                <div class="form-row">
+                    <div class="col-sm-12 col-lg-6 col-xl-4">
+                        <label for="dob">
+                            Date of Birth</label>
+                        <input type="date" name="dob" id="" class="form-control">
+                    </div>
+                    <div class="col">
+                        <label>Gender</label>
+                        <div class="m-auto custom-control custom-control-inline4">
+
+                            <input value="male" type="radio" name="gen" id="">
+                            <label for="male">Male</label>
+
+                            <input value="female" type="radio" name="gen" id="">
+                            <label for="female">Female</label>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="hno">House No</label>
+                        <input type="text" name="hno" class="form-control" id="">
+                    </div>
+                    <div class="col">
+                        <label for="sname">Street Name</label>
+                        <input type="text" name="sname" class="form-control" id="">
+                    </div>
+                    <div class="col">
+                        <label for="ldmr">Landmark</label>
+                        <input type="text" name="ldmr" class="form-control" id="">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col">
+                        <label for="city">City</label>
+                        <input type="text" name="city" class="form-control" id="">
+                    </div>
+                    <div class="col">
+                        <label for="state">State</label>
+                        <input type="text" name="state" class="form-control" id="">
+                    </div>
+                    <div class="col">
+                        <label for="ldmr">Pincode</label>
+                        <input type="text" name="pc" class="form-control" id="">
+                    </div>
+                </div>
+                <br class="my-2">
+                <div class="form-row justify-content-center m-auto">
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <a href="@{/}" class="btn btn-danger">Abort</a>
+                </div>
+
+            </form>
+        </div>
+        <br>
+    </div>
+
+</body>
+
+</html>

@@ -20,34 +20,46 @@ public class Seller
 
     }
 
-    public Seller(String name, float rating, String emailAddress, Double phoneNumber, String doorNumber, String street, String city, String state)
+    public Seller(String username, String password, String name, float rating, String emailAddress, int aadhar, String phoneNumber, String houseNumber, String street, String city, String state,
+                  String panno, String gstno, int bankaccountno, String bankifsccode)
     {
+        this.username = username;
+        this.password = password;
         this.name = name;
         this.Rating = rating;
-        this.EmailAddress = emailAddress;
+        this.email = emailAddress;
+        this.aadharno = aadhar;
         this.PhoneNumber = phoneNumber;
-        this.DoorNumber = doorNumber;
+        this.HouseNumber = houseNumber;
         this.Street = street;
         this.City = city;
         this.State = state;
+        this.panno = panno;
+        this.gstno = gstno;
+        this.bankaccountno = bankaccountno;
+        this.bankifsccode = bankifsccode;
     }
 
     @Id @GeneratedValue public Long ID;
-
+    public String username;
+    public String password;
 
     public String name;
 
     public float Rating;
 
-    public String EmailAddress;
+    public String email;
+    public int aadharno;
+    public String PhoneNumber;
 
-    public Double PhoneNumber;
-
-    public String DoorNumber;
+    public String HouseNumber;
     public String Street;
     public String City;
     public String State;
-
+    public String panno;
+    public String gstno;
+    public int bankaccountno;
+    public String bankifsccode;
     @Relationship(type = "SELLS", direction = Relationship.OUTGOING)
     public Set<Sells> Products = new HashSet<Sells>();
 

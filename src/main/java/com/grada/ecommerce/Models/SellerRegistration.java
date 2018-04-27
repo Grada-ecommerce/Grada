@@ -15,8 +15,11 @@ public class SellerRegistration {
    private String password;
    private String name;
    private String email;
-   private int adhaarno;
-   private String addressproofid;
+   private int aadharno;
+   private String HouseNumber;
+   private String Street;
+   private String City;
+   private String State;
    private String panno;
    private String gstno;
    private boolean isIndividual;
@@ -24,12 +27,36 @@ public class SellerRegistration {
    private String bankaccountname;
    private String bankifsccode;
 
-    public String getAddressproofid() {
-        return addressproofid;
+    public String getHouseNumber() {
+        return HouseNumber;
     }
 
-    public void setAddressproofid(String addressproofid) {
-        this.addressproofid = addressproofid;
+    public void setHouseNumber(String houseNumber) {
+        this.HouseNumber = houseNumber;
+    }
+
+    public String getStreet() {
+        return Street;
+    }
+
+    public void setStreet(String Street) {
+        this.Street = Street;
+    }
+
+    public String getCity() {
+        return City;
+    }
+
+    public void setCity(String City) {
+        this.City = City;
+    }
+
+    public String getState() {
+        return State;
+    }
+
+    public void setState(String State) {
+        this.State = State;
     }
 
     public String getGstno() {
@@ -106,11 +133,11 @@ public class SellerRegistration {
     }
 
     public int getAdhaarno() {
-        return adhaarno;
+        return aadharno;
     }
 
-    public void setAdhaarno(int adhaarno) {
-        this.adhaarno = adhaarno;
+    public void setAadharno(int aadharno) {
+        this.aadharno = aadharno;
     }
 
     public String getPanno() {
