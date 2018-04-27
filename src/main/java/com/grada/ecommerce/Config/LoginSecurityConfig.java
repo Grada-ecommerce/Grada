@@ -22,7 +22,16 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception
     { authenticationManagerBuilder.authenticationProvider(authenticationProvider());
-            }
+        /*
+        authenticationManagerBuilder.inMemoryAuthentication()
+                .withUser("buyer").password("buyerpassword").authorities("ROLE_BUYER")
+                .and()
+                .withUser("seller").password("sellerpassword").authorities("ROLE_SELLER")
+                .and()
+                .withUser("admin").password("adminpassword").authorities("ROLE_BUYER","ROLE_SELLER","ROLE_ADMIN");
+*/
+
+    }
 
 
     protected void configure(HttpSecurity httpSecurity) throws Exception
