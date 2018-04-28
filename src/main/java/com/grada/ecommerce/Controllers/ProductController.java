@@ -3,6 +3,7 @@ package com.grada.ecommerce.Controllers;
 import com.grada.ecommerce.Models.Product.Product;
 import com.grada.ecommerce.Services.ProductService;
 import com.grada.ecommerce.Services.SellerService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @RequestMapping("/product")
 @Controller
@@ -33,14 +35,17 @@ public class ProductController
         model.addAttribute("products", products);
         return "index";
     }
+
     //do not delete
-    @RequestMapping(value = "/user-register")
+    /*@RequestMapping(value = "/user-register")
     public String UserRegister(Model model)
     {
         //Iterable<Product> products  = productService.products();
         //model.addAttribute("products", products);
         return "user_register";
-    }
+    } */
+
+    /*
     //do not delete
     @RequestMapping(value = "/seller-register")
     public String SellerRegister(Model model)
@@ -48,7 +53,9 @@ public class ProductController
         //Iterable<Product> products  = productService.products();
         //model.addAttribute("products", products);
         return "seller_register";
-    }
+    } */
+
+    /*
     //do not delete
     @RequestMapping(value = "/seller-analytics")
     public String SellerAna(Model model)
@@ -56,33 +63,33 @@ public class ProductController
         //Iterable<Product> products  = productService.products();
         //model.addAttribute("products", products);
         return "seller_analytics";
-    }
+    } */
+
+
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public String ShowProduct(@PathVariable("id") Product product, Model model)
+    public ModelAndView ShowProduct(@PathVariable("id") Product product, Model model)
     {
-        //System.out.println(id);
-        //Product product = productService.findProductByID(id);
-        //System.out.println(product.title);
-        //if(product == null)
-        //    return "redirect:/";
-        model.addAttribute("product", product);
-        System.out.println(product.title);
-        return "product_desc";
+        ModelAndView modelAndView = new ModelAndView("product_desc");
+        modelAndView.addObject("product", product);
+        return modelAndView;
     }
 
 
     @RequestMapping(value = "/add")
-    public String AddProduct(Model model)
+    public ModelAndView AddProduct(Model model)
     {
-        model.addAttribute("product", new Product());
-        return "addProduct";
+        ModelAndView modelAndView = new ModelAndView("addProduct");
+        modelAndView.addObject("product", new Product());
+        return modelAndView;
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public String AddProduct(@ModelAttribute Product product)
+    public ModelAndView AddProduct(@ModelAttribute Product product)
     {
         productService.addProduct(product);
-        return "redirect:/";
+        ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("message", "Added " + product.title);
+        return modelAndView;
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
@@ -99,12 +106,15 @@ public class ProductController
         return "redirect:/";
     }
 
+
+    /*
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String LoginPage(Model model)
     {
         return "login";
-    }
+    } */
 
+    /*
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String Authenticate(Model model, String username, String password)
     {
@@ -117,7 +127,7 @@ public class ProductController
 
         else
             return "redirect:/login";
-    }
+    } */
 
     @RequestMapping(value = "/policy", method = RequestMethod.GET)
     public String PolicyPage()

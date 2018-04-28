@@ -4,6 +4,8 @@ import com.grada.ecommerce.Data.ProductRepository;
 import com.grada.ecommerce.Models.Product.Product;
 import com.grada.ecommerce.Models.Product.ShortProduct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -29,12 +31,23 @@ public class ProductService
         return productRepository.findAll();
     }
 
+    public Iterable<Product> products(Pageable pageable)
+    {
+        return productRepository.findAll(pageable);
+    }
+
+
+
+    public Iterable<ShortProduct> products(PageRequest pageRequest)
+    {
+        //this.productRepository = productRepository;
+        //return productRepository.findByTitleLike("*", pageRequest);
+        return null;
+    }
+
     public Iterable<ShortProduct> shortProductsByTitle(String title)
     {
         Iterable<ShortProduct> s =  productRepository.findByTitleLike(title);
-        s.forEach(
-                shortProduct -> System.out.println(shortProduct.getTitle())
-        );
         return s;
     }
 
@@ -75,6 +88,6 @@ public class ProductService
     
      public ShortProduct findProductByProductId(String pid)
     {
-     return productRepository.findProductByProductid(pid);
+        return productRepository.findProductByProductid(pid);
     }
 }

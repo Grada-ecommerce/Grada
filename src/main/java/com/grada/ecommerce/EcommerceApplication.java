@@ -81,7 +81,16 @@ public class EcommerceApplication {
             boughtRepository.save(bought1);  */
             //end
 
+            /*String imgUrl = "www.randomimage.com/image1.png";
+            Product product1 = new Product("id1", "Random Product2", 2.0f, "Random Description", imgUrl, "Random Brand");
+            Product product2 = new Product("id2", "Random Product3", 4.0f, "Random Description", imgUrl, "Random Brand");
+            Product product3 = new Product("id3", "Random Product4", 3.0f, "Random Description", imgUrl, "Random Brand");
 
-		};
+            productService.addProduct(product1);
+            productService.addProduct(product2);
+            productService.addProduct(product3); */
+
+
+        };
 	}
 }

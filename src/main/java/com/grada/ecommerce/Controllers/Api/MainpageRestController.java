@@ -16,7 +16,8 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RequestMapping("api/mainpage")
 @RestController
-public class MainpageRestController {
+public class MainpageRestController
+{
     public Iterable<Mainpageitems> getMainPageItems()
     {  Iterable<Mainpageitems> iterable = new HashSet<Mainpageitems>();
         return iterable;

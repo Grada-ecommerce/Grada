@@ -37,8 +37,8 @@ public class LoginSecurityConfig extends WebSecurityConfigurerAdapter
     protected void configure(HttpSecurity httpSecurity) throws Exception
     {
        httpSecurity.authorizeRequests()
-                .antMatchers("/pruduct/add").hasRole("Seller")
-                .antMatchers("/pruduct/seller-analytics").hasRole("Seller")
+                .antMatchers("/product/add").hasRole("Seller")
+                .antMatchers("/product/seller-analytics").hasRole("Seller")
                 .antMatchers("/product/delete").hasRole("Seller")
                 .and()
                 .formLogin().loginPage("/login")

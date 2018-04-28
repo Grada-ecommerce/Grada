@@ -3,7 +3,9 @@ package com.grada.ecommerce.Controllers;
 
 import com.grada.ecommerce.Models.Customer.Customer;
 import com.grada.ecommerce.Models.Seller.Seller;
+import com.grada.ecommerce.Models.User;
 import com.grada.ecommerce.Services.CustomerService;
+import com.grada.ecommerce.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,17 +21,22 @@ public class CustomerController
     @Autowired
     CustomerService customerService;
 
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public ModelAndView CustomerRegistration()
     {
         ModelAndView modelAndView = new ModelAndView("customer_register");
         modelAndView.addObject("customer", new Customer());
+        modelAndView.addObject("user", new User());
         return modelAndView;
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
-    public ModelAndView AddCustomer(@ModelAttribute Customer customer)
+    public ModelAndView AddCustomer(@ModelAttribute Customer customer, @ModelAttribute User user)
     {
+        userService.addUser(user);
         customerService.AddCustomer(customer);
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("message", "Customer Added successfully");

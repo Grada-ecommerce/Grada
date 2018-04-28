@@ -18,7 +18,7 @@ public class Product
     {
     }
 
-    public Product(String productid,String title, float rating, String description, String url, String company)
+    public Product(String productid, String title, float rating, String description, String url, String company)
     {   this.productid = productid;
         this.title  = title;
         this.rating = rating;
@@ -37,7 +37,6 @@ public class Product
     public String Description;
 
     public String company;
-    //public Set<String> imgUrl;
     public String imgUrl;
 
     public String getProductid() {
@@ -65,13 +64,12 @@ public class Product
     public double getPrice()
     {
         double min = Double.POSITIVE_INFINITY;
-        /*Collection<Double> values = sellerWithPrice.values();
-        for(double value : values)
+        //Collection<Double> values = sellerWithPrice.values();
+        for(Sells sells : this.Sellers)
         {
-            if(min > value)
-                min = value;
-        }  */
-
+            if(min > sells.price)
+                min = sells.price;
+        }
         return min;
     }
 
@@ -83,6 +81,11 @@ public class Product
             quantity += sells.quantity;
         }
         return quantity;
+    }
+
+    public int getPopularity()
+    {
+        return reviews.size();
     }
 
 

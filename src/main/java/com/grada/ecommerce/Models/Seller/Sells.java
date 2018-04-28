@@ -17,6 +17,8 @@ public class Sells
 
     public int quantity;
 
+    public double price;
+
     @Relationship(type = "SELLS", direction = Relationship.OUTGOING)
     public Product product;
 

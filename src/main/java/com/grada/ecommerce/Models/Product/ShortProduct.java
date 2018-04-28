@@ -2,6 +2,7 @@ package com.grada.ecommerce.Models.Product;
 
 import java.util.Set;
 
+
 public interface ShortProduct
 {
     public float getRating();

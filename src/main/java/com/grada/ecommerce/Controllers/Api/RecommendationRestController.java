@@ -36,6 +36,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class RecommendationRestController {
     @Autowired
     ProductService productService;
+
     @RequestMapping("/itembased")
     public Iterable<ShortProduct> getItemBasedRecommendation(@RequestParam(value = "productid", defaultValue = "B000234I3U") String productid) throws UnsupportedEncodingException, IOException, ParseException
     {
@@ -66,8 +67,7 @@ public class RecommendationRestController {
         return finalitemsrecommended;
         
     }
-    
-    
+
      @RequestMapping("/userbased")
     public Iterable<ShortProduct> getUserBasedRecommendation(@RequestParam(value = "customerid", defaultValue = "ADJAGYEMW7KWN") String customerid) throws UnsupportedEncodingException, IOException, ParseException
     {
