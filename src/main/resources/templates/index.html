@@ -79,7 +79,7 @@
 <div class="container text-center">
 
     <div class="row">
-        <div th:each="Product:${products}" class="col-lg-3 col-sm-12 col-md-6 my-2 p-auto">
+        <div th:each="Product:${products}" class="col-lg-3 col-sm-12 col-md-6 my-2 p-auto" id="grid">
             <div class="card prod">
                 <div class="card-body">
                     <img src="http://via.placeholder.com/150x150/888/111" th:src="${Product.imgUrl}" alt="img" class="card-img-top img-thumbnail img-fluid">
@@ -110,29 +110,37 @@
     $(window).on('load', function(){
         $(".se-pre-con").fadeOut("1000");
     });
-    var pageCount =  $(".prod").length / 12;
-    $("#pagin").append('<li class="page-item"><a class="page-link" href="#">Previous</a></li>');
-    for(var i = 0 ; i<pageCount;i++){
+   function filter() {
+        $.ajax({
+            url: "/page/",
+            method:"GET",
+            data:$('form').serialize,
+            success:function(data){
+                $('#grid').empty();
+                data.forEach(product => {
+                    var $tr = $('<div class="col-lg-3">').append(
+                        $('<img>').attr({
+                            "src": product.img,
+                            "class": "rounded-circle",
+                            "width": "140",
+                            "height": "140",
+                            "alt": "Product Image"
+                        }),
+                        $('<h2>').text(product.title),
+                        $('<p class="lead">').text(product.body),
+                        $('<a>').attr({
 
-        $("#pagin").append('<li class="page-item"><a href="#" class="page-link">'+(i+1)+'</a></li> ');
+                            "href": 'id/' + product.id,
+                            "class": "btn btn-secondary"
+                        }).text('View Product')
+                    ).appendTo('#grid');
+                    //console.log($tr.wrap('<p>').html());
+                })
+
+            }
+        })
     }
-    $("#pagin").append('<li class="page-item"><a class="page-link" href="#">Next</a></li>');
-    $("#pagin li").first().find("a").addClass("current")
-    showPage = function(page) {
-        $(".prod").hide();
-        $(".prod").each(function(n) {
-            if (n >= 12 * (page - 1) && n < 12 * page)
-                $(this).show();
-        });
-    }
 
-    showPage(1);
-
-    $("#pagin li a").click(function() {
-        $("#pagin li a").removeClass("current");
-        $(this).addClass("current");
-        showPage(parseInt($(this).text()))
-    });
-</script>
+ </script>
 </body>
 </html>
