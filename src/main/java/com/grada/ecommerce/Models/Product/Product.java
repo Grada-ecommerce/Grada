@@ -38,6 +38,8 @@ public class Product
 
     public String company;
     public String imgUrl;
+    public HashSet<String> Categories;
+    public double OverallPrice;
 
     public String getProductid() {
         return productid;
