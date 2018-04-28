@@ -10,10 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("api/product")
 @RestController
@@ -70,9 +67,14 @@ public class ProductRestController
         return product.reviews;
     }
 
-    @RequestMapping("/review/{id}/add")
-    public void Re
+    @RequestMapping("/review/add/{id}")
+    public void AddReview(@PathVariable("id") long id, @RequestBody Review review)
+    {
+        if(review == null)
+            return;
 
-
+        Product product = productService.findProductByID(id);
+        product.reviews.add(review);
+    }
 
 }

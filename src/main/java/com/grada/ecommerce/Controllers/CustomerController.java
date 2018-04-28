@@ -6,6 +6,7 @@ import com.grada.ecommerce.Models.Seller.Seller;
 import com.grada.ecommerce.Models.User;
 import com.grada.ecommerce.Services.CustomerService;
 import com.grada.ecommerce.Services.UserService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -40,6 +41,20 @@ public class CustomerController
         customerService.AddCustomer(customer);
         ModelAndView modelAndView = new ModelAndView("index");
         modelAndView.addObject("message", "Customer Added successfully");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/wishlist", method = RequestMethod.GET)
+    public ModelAndView GetWishList()
+    {
+        ModelAndView modelAndView = new ModelAndView("wishlist");
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/cart", method = RequestMethod.GET)
+    public ModelAndView GetCart()
+    {
+        ModelAndView modelAndView = new ModelAndView("ShoppingCart");
         return modelAndView;
     }
 
