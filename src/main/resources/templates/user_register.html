@@ -59,39 +59,39 @@
             <form method="post" th:action="@{/register}" class="form">
                 <div class="form-row text-center">
                     <div class="col">
-                        <label for="name">Name</label>
-                        <input type="text" class="form-control" th:name="name" id="name">
+                        <label for="name">Name<span style="color:red;">*</span></label>
+                        <input type="text" class="form-control" th:name="name" id="name" required>
                     </div>
                     <div class="col">
                         <label for="phoneNumber">Phone Number</label>
-                        <input type="text" class="form-control" th:name="phoneNumber" id="phoneNumber">
+                        <input type="text" class="form-control" th:name="phoneNumber" id="phoneNumber" required>
                     </div>
                 </div>
                 <br>
                 <div class="form-row">
                     <div class="col">
-                        <label for="email">Email</label>
-                        <input type="text" name="email" class="form-control" id="email">
+                        <label for="email">Email<span style="color:red;">*</span><span style="color:red;">*</span></label>
+                        <input type="text" name="email" class="form-control" id="email" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
-                        <label for="houseNumber">House Number</label>
-                        <input type="text" name="houseNumber" class="form-control" id="houseNumber">
+                        <label for="houseNumber">House Number<span style="color:red;">*</span></label>
+                        <input type="text" name="houseNumber" class="form-control" id="houseNumber" required>
                     </div>
                     <div class="col">
-                        <label for="street">Street</label>
-                        <input type="text" name="street" class="form-control" id="street">
+                        <label for="street">Street<span style="color:red;">*</span></label>
+                        <input type="text" name="street" class="form-control" id="street" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col">
-                        <label for="city">City</label>
-                        <input type="text" name="city" class="form-control" id="city">
+                        <label for="city">City<span style="color:red;">*</span></label>
+                        <input type="text" name="city" class="form-control" id="city" required>
                     </div>
                     <div class="col">
-                        <label for="state">State</label>
-                        <input type="text" name="state" class="form-control" id="state">
+                        <label for="state">State<span style="color:red;">*</span></label>
+                        <input type="text" name="state" class="form-control" id="state" required>
                     </div>
                 </div>
                 <br class="my-2">
