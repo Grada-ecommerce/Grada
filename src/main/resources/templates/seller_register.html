@@ -76,11 +76,11 @@
                 <div class="form-row">
                     <div class="col">
                         <label for="aadharno">Aadhar<span style="color:red;">*</span></label>
-                        <input type="number" th:name="aadharno" class="form-control" id="aadharno" required>
+                        <input type="number" th:name="aadharno" class="form-control" id="aadharno" maxlength="12" required>
                     </div>
                     <div class="col">
                         <label for="panno">Pan Number<span style="color:red;">*</span></label>
-                        <input type="text" th:name="panno" class="form-control" id="panno" required>
+                        <input type="number" th:name="panno" class="form-control" id="panno" maxlength="10" required>
                     </div>
                     <div class="col">
                         <label for="gstno">GST Number<span style="color:red;">*</span></label>
@@ -115,7 +115,7 @@
                     </div>
                     <div class="col">
                         <label for="PhoneNumber">Phone No</label>
-                        <input type="text" th:name="PhoneNumber" class="form-control" id="PhoneNumber">
+                        <input type="number" th:name="PhoneNumber" class="form-control" id="PhoneNumber" maxlength="10">
                     </div>
                     <div class="col">
                         <label for="bankifsccode">IFSC Code<span style="color:red;">*</span></label>
