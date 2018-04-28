@@ -11,11 +11,17 @@ import com.grada.ecommerce.Models.Seller.Seller;
 import com.grada.ecommerce.Models.Seller.Sells;
 import com.grada.ecommerce.Services.ProductService;
 import com.grada.ecommerce.Services.SellerService;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.neo4j.repository.config.EnableNeo4jRepositories;
+
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.HashSet;
 
 @SpringBootApplication
 @EnableNeo4jRepositories
@@ -89,6 +95,56 @@ public class EcommerceApplication {
             productService.addProduct(product1);
             productService.addProduct(product2);
             productService.addProduct(product3); */
+
+            String prefix = "c:\\adb\\new_meta_";
+            String suffix = ".json";
+
+            String[] file = new String[]
+                    {
+                            "All_Electronics",
+                            "Appliances",
+                            "Baby_Products",
+                            "Computers",
+                            "Furniture",
+                            "Gift_Cards",
+                            "GPS_and_Navigation",
+                            "Home_Improvement",
+                            "Luxury_Beauty",
+                            "Magazine_Subscriptions",
+                            "Rock"
+                    };
+
+
+
+            org.json.simple.parser.JSONParser parser = new org.json.simple.parser.JSONParser();
+            for (int i = 0; i < file.length; i++)
+            {
+                String fileName = prefix + file[i] + suffix;
+                JSONObject jobj   = (JSONObject) parser.parse(new FileReader(fileName));
+                JSONArray a  = (JSONArray) jobj.get("products");
+
+                for(Object o : a)
+                {
+                    JSONObject obj = (JSONObject) o;
+                    Product p = new Product();
+                    p.title = (String) obj.get("title");
+                    p.productid = (String) obj.get("asin");
+                    p.imgUrl = (String) obj.get("imUrl");
+
+                    if(obj.containsKey("price"))
+                        p.OverallPrice = (double) obj.get("price");
+                    else
+                        p.OverallPrice = Double.POSITIVE_INFINITY;
+                    p.Description = (String) obj.get("description");
+                    p.company = (String) obj.get("brand");
+                    p.Categories = ((ArrayList<String>) obj.get("categories")).toString();
+
+                    productService.addProduct(p);
+
+                }
+
+            }
+
 
 
         };
