@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-@RequestMapping("/product")
+
 @Controller
 public class ProductController
 {
@@ -29,11 +29,10 @@ public class ProductController
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String Index(Model model)
+    public ModelAndView Index(Model model)
     {
-        Iterable<Product> products  = productService.products();
-        model.addAttribute("products", products);
-        return "index";
+       ModelAndView modelAndView = new ModelAndView("index");
+       return modelAndView;
     }
 
     //do not delete
@@ -66,7 +65,7 @@ public class ProductController
     } */
 
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/{id}", method = RequestMethod.GET)
     public ModelAndView ShowProduct(@PathVariable("id") Product product, Model model)
     {
         ModelAndView modelAndView = new ModelAndView("product_desc");
@@ -75,7 +74,7 @@ public class ProductController
     }
 
 
-    @RequestMapping(value = "/add")
+    @RequestMapping(value = "/product/add")
     public ModelAndView AddProduct(Model model)
     {
         ModelAndView modelAndView = new ModelAndView("addProduct");
@@ -83,7 +82,7 @@ public class ProductController
         return modelAndView;
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/product/add", method = RequestMethod.POST)
     public ModelAndView AddProduct(@ModelAttribute Product product)
     {
         productService.addProduct(product);
@@ -92,14 +91,14 @@ public class ProductController
         return modelAndView;
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/delete", method = RequestMethod.GET)
     public String DeleteProduct(Model model)
     {
         model.addAttribute("product", new Product());
         return "delete";
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    @RequestMapping(value = "/product/delete", method = RequestMethod.POST)
     public String DeleteProduct(@ModelAttribute Product product)
     {
         productService.deleteProduct(product);
@@ -129,7 +128,7 @@ public class ProductController
             return "redirect:/login";
     } */
 
-    @RequestMapping(value = "/policy", method = RequestMethod.GET)
+    @RequestMapping(value = "/product/policy", method = RequestMethod.GET)
     public String PolicyPage()
     {
         return "policies";

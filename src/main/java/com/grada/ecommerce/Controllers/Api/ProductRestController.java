@@ -34,28 +34,29 @@ public class ProductRestController
     @RequestMapping("/page/")
     public Iterable<Product> getProduct(@RequestParam("page") int page, @RequestParam("prop") String prop, @RequestParam("ord") String order)
     {
-        //System.out.println(page + prop + order);
+        System.out.println(page + prop + order);
 
         Sort.Direction direction = null;
-        if(order.equals("asc"))
+        if(order.contains("asc"))
             direction = Sort.Direction.ASC;
-        else if(order.equals("desc"))
+        else if(order.contains("desc"))
             direction = Sort.Direction.DESC;
 
-        if(prop.equals("rating"))
-            prop = "rating";
-        else if(prop.equals("price"))
+        if(prop.contains("rating"))
         {
-            prop = "price";
+            prop = "rating";
         }
-        else if(prop.equals("popularity"))
+        else if(prop.contains("price"))
+        {
+            prop = "OverallPrice";
+        }
+        else if(prop.contains("popularity"))
         {
             prop = "popularity";
         }
 
-
         //Iterable<ShortProduct> products =  productService.products(new PageRequest(page, 2, direction, prop));
-        Pageable pageable = PageRequest.of(page, 2, direction, prop);
+        Pageable pageable = PageRequest.of(page, 10, direction, prop);
         Page<Product> products = productRepository.findAll(pageable);
         return products;
     }
